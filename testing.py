@@ -1,18 +1,19 @@
-'''
-In this code we are going to first test our 
-weak classifier, which in this case is decision stumps,
-on the breast cancer data set.
-
-We will look at the confusion matrix to evaluate the 
-performance of our classifier.
-'''
-
-
-from __future__ import division
 import numpy as np
-import matplotlib.pyplot as plt
+import DecisionStump as ds
 
-csvfile = open('data.csv')
-print csvfile
+# m is the number of data points
+# d is the dimension of the data
+m = 100;d = 5
 
+
+# generate some data
+data = np.random.rand(m,d)
+X = np.zeros((m,d+1))
+X[:,:-1] = data
+X[:,-1] = np.random.randint(2,size=100)
+
+D = np.ones()
+
+stumps = ds.DecisionStump()
+stumps.calculateDecisionStump(X,)
 
