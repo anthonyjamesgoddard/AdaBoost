@@ -18,5 +18,5 @@ class AdaBoost(object):
         self.N = X.shape[0]
         self.D = np.ones(self.N)/self.N
         self.Dt= []
-
+        
     

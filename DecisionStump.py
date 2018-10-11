@@ -23,18 +23,18 @@ class DecisionStump(object):
         Fstar = np.inf
         m,dp1 = X.shape
         d = dp1 - 1
+        X = np.vstack([X,X[-1]+1]); X[-1,-1] = 0;
         for j in range(d):
 # append a row of the data matrix that 
 # is equal to the last row +1 and with 
 # the last coordinate set to zero 
-            X = np.vstack([X,X[-1]+1]); X[-1,-1] = 0;
 # sort the the m rows X using the jth coordinate 
-            X = X[X[:j].argsort()]
+            X = X[X[:,j].argsort()]
 # get last column of X 
-            y = X[:,-1][:-1]
+            y = (X[:,-1])[:-1]
 # obtain the sum of the components of the 
             ysum = (y==1).astype(int)
-            F = D.dot(ysum)
+            F = np.dot(D,ysum)
 # we apply the trick oulined on page 104
             if(F<Fstar):
                 Fstar = F; self.theta = X[0,j]-1; self.j = j;
